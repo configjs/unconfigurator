@@ -44,7 +44,8 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "chokidar './src/**/*' 'package.json' 'tsup.config.ts' 'tsconfig.json' -c 'tsup'"
+    "dev": "chokidar './src/**/*' 'package.json' 'tsup.config.ts' 'tsconfig.json' -c 'tsup'",
+    "prepublishOnly": "cp ../../README.md README.md && tsup"
   },
   "dependencies": {
     "@iconify/json": "2.2.214",
