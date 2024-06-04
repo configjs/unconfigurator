@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <br />
-  <img src="./ph-command.svg" />
+  <img src="https://github.com/configjs/unconfigurator/blob/v2/ph-command.svg?raw=true" />
   <h1>unconfigurator</h1>
   <p>Try to make a web page to managing all frontend project configurations.</p>
 </div>
