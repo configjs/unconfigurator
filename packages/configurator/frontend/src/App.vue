@@ -1,12 +1,13 @@
 <script setup lang="tsx">
-import { NConfigProvider, darkTheme, zhCN } from 'naive-ui'
+import { darkTheme, zhCN } from 'naive-ui'
 import { isDark } from './composables/dark'
+import Layout from './Layout.vue'
 </script>
 
 <template>
   <Suspense>
     <NConfigProvider :theme="isDark ? darkTheme : null" :locale="zhCN">
-      Hello world!
+      <Layout />
     </NConfigProvider>
   </Suspense>
 </template>
