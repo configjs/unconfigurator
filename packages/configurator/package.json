@@ -1,7 +1,7 @@
 {
   "name": "unconfigurator",
   "type": "module",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "packageManager": "pnpm@8.8.0",
   "description": "A web ui for managing frontend configurations",
   "author": "Naily <zero@naily.cc> (https://naily.cc)",
@@ -45,7 +45,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "chokidar './src/**/*' 'package.json' 'tsup.config.ts' 'tsconfig.json' -c 'tsup'",
-    "prepublishOnly": "cp ../../README.md README.md && tsup"
+    "prepublishOnly": "cp ../../README.md README.md && cp ../../ph-command.svg ph-command.svg && tsup"
   },
   "dependencies": {
     "@iconify/json": "2.2.214",
