@@ -90,6 +90,8 @@ export default async function Configurator(): Promise<
         join(cwd(), './.configure/frontend/src/components'),
       ],
       dts: join(cwd(), './.configure/frontend/components.d.ts'),
+      include: [/[\\/]node_modules[\\/]/, /\.vue$/, /\.vue\?vue/],
+      exclude: [/[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
     }),
     UnoCSS({
       presets: [presetUno(), presetIcons(), presetTypography()],
