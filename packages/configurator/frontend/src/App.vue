@@ -1,8 +1,11 @@
 <script setup lang="tsx">
+import { NConfigProvider } from 'naive-ui'
 </script>
 
 <template>
   <Suspense>
-    Hello world!
+    <NConfigProvider>
+      Hello world!
+    </NConfigProvider>
   </Suspense>
 </template>
