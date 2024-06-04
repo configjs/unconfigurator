@@ -1,0 +1,9 @@
+{
+  "name": "base",
+  "scripts": {
+    "configure": "configure"
+  },
+  "dependencies": {
+    "unconfigurator": "workspace:*"
+  }
+}

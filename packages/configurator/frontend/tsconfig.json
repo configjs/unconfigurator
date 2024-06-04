@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "jsxImportSource": "vue",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "types": [
+      "../../../fixtures/base/.configure/frontend/auto-imports.d.ts",
+      "../../../fixtures/base/.configure/frontend/components.d.ts",
+      "../types/env.d.ts"
+    ]
+  },
+  "include": [
+    "./src/**/*",
+    "../types/env.d.ts",
+    "../types/env.d.ts",
+    "../types/env.d.ts"
+  ]
+}
