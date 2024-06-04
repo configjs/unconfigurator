@@ -2,5 +2,7 @@
 </script>
 
 <template>
-  Hello world!
+  <Suspense>
+    Hello world!
+  </Suspense>
 </template>
