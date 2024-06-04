@@ -42,36 +42,33 @@ watch(
   { immediate: true },
 )
 
-const CurrentSidebarComponent = shallowRef<Component>(null)
-const showTrigger = computed((): boolean | 'bar' | 'arrow-circle' => {
-  return CurrentSidebarComponent.value !== null
+let CurrentSidebarComponent: null | Component = null
+const CurrentSidebarComponentState = ref<boolean>(true)
+const showTrigger = ref<boolean | 'bar' | 'arrow-circle'>(true)
+function toggleSidebarTrigger() {
+  showTrigger.value = CurrentSidebarComponent !== null
     ? windowWidth.value < 768
       ? 'bar'
       : 'arrow-circle'
     : false
-})
-watch(
-  currentMenuKey,
-  async () => {
-    playing.value = true
-    // eslint-disable-next-line ts/ban-ts-comment, ts/prefer-ts-expect-error
-    // @ts-ignore
-    const menuObject = menu.value.find(
-      item => item.key === currentMenuKey.value,
-    )
-    if (!menuObject || !menuObject.component) { CurrentSidebarComponent.value = null }
-    else if (
-      typeof menuObject === 'object'
-      && typeof menuObject.component === 'function'
-    ) {
-      CurrentSidebarComponent.value = defineAsyncComponent(
-        menuObject.component as any,
-      )
-    }
-    else { CurrentSidebarComponent.value = null }
-  },
-  { immediate: true },
-)
+}
+watch(currentMenuKey, async () => {
+  playing.value = true
+  // eslint-disable-next-line ts/ban-ts-comment, ts/prefer-ts-expect-error
+  // @ts-ignore
+  const menuObject = menu.value.find(item => item.key === currentMenuKey.value)
+  if (!menuObject || !menuObject.component)
+    CurrentSidebarComponent = null
+  else if (typeof menuObject === 'object' && typeof menuObject.component === 'function')
+    CurrentSidebarComponent = defineAsyncComponent(menuObject.component as any)
+  else CurrentSidebarComponent = null
+  CurrentSidebarComponentState.value = !CurrentSidebarComponentState.value
+  nextTick(() => {
+    CurrentSidebarComponentState.value = !CurrentSidebarComponentState.value
+  })
+  toggleSidebarTrigger()
+}, { immediate: true })
+watch(windowWidth, toggleSidebarTrigger, { immediate: true })
 
 function convertMenu(
   IntegrationSidebarConfig: typeof menuOptions,
@@ -141,7 +138,7 @@ function convertMenu(
             id="unconfigurator_app_bar"
             class="w-full"
           >
-            <CurrentSidebarComponent v-if="CurrentSidebarComponent" />
+            <CurrentSidebarComponent v-if="CurrentSidebarComponent && CurrentSidebarComponentState" />
           </div>
         </div>
       </NLayoutSider>
