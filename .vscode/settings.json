@@ -48,11 +48,14 @@
     "yaml"
   ],
   "cSpell.words": [
+    "browserslistrc",
     "configjs",
     "configurator",
     "importx",
     "linkcode",
     "nodedotjs",
+    "npmignore",
+    "stylelintrc",
     "unconfigurator",
     "webtransport"
   ]

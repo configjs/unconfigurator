@@ -6,6 +6,8 @@
   <p>Try to make a web page to managing all frontend project configurations.</p>
 </div>
 
+> Project is developing, not ready for use, please contact me if you are interested in this project: [zero@naily.cc](mailto:zero@naily.cc)
+
 Try to make a simple command: just run `unconfigurator` or `configure` command in the project root directory, and then you can manage all the configurations of the project through the web page.
 
 ## Features
