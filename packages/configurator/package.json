@@ -135,32 +135,6 @@
     "zod-to-json-schema": "3.23.0"
   },
   "bundledDependencies": [
-    "@iconify/json",
-    "@naiable/utils",
-    "@types/js-yaml",
-    "@vitejs/plugin-vue",
-    "@vitejs/plugin-vue-jsx",
-    "@vueuse/core",
-    "chalk",
-    "date-fns",
-    "importx",
-    "js-yaml",
-    "less",
-    "naive-ui",
-    "path-to-regexp",
-    "pinia",
-    "pinia-plugin-persistedstate",
-    "socket.io",
-    "socket.io-client",
-    "unocss",
-    "unplugin-auto-import",
-    "unplugin-vue-components",
-    "vite",
-    "vite-plugin-vue-configurable-router",
-    "vite-plugin-vue-devtools",
-    "vue",
-    "vue-router",
-    "zod",
-    "zod-to-json-schema"
+    "naive-ui"
   ]
 }
