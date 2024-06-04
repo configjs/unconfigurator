@@ -42,7 +42,7 @@ watch(
   { immediate: true },
 )
 
-const CurrentSidebarComponent = shallowRef<Component>(null)
+let CurrentSidebarComponent = shallowReactive<Component>(null)
 watch(
   currentMenuKey,
   async () => {
@@ -52,16 +52,16 @@ watch(
     const menuObject = menu.value.find(
       item => item.key === currentMenuKey.value,
     )
-    if (!menuObject || !menuObject.component) { CurrentSidebarComponent.value = null }
+    if (!menuObject || !menuObject.component) { CurrentSidebarComponent = null }
     else if (
       typeof menuObject === 'object'
       && typeof menuObject.component === 'function'
     ) {
-      CurrentSidebarComponent.value = defineAsyncComponent(
+      CurrentSidebarComponent = defineAsyncComponent(
         menuObject.component as any,
       )
     }
-    else { CurrentSidebarComponent.value = null }
+    else { CurrentSidebarComponent = null }
   },
   { immediate: true },
 )

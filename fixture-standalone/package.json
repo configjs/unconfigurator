@@ -1,0 +1,10 @@
+{
+  "name": "base",
+  "packageManager": "yarn@1.22.19",
+  "scripts": {
+    "configure": "configure"
+  },
+  "dependencies": {
+    "unconfigurator": "latest"
+  }
+}
