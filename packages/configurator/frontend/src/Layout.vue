@@ -72,19 +72,16 @@ watch(currentMenuKey, async () => {
 }, { immediate: true })
 watch(windowWidth, toggleSidebarTrigger, { immediate: true })
 
-function convertMenu(
-  IntegrationSidebarConfig: typeof menuOptions,
-): ExtendMenuMixedOption[] {
-  return IntegrationSidebarConfig.map(
-    ({ component, to, icon, title }): ExtendMenuMixedOption => {
-      return {
-        key: `${title}-${to}`,
-        to,
-        label: () => <RouterLink to={to}>{title}</RouterLink>,
-        icon: renderIcon(icon),
-        component,
-      }
-    },
+function convertMenu(IntegrationSidebarConfig: typeof menuOptions): ExtendMenuMixedOption[] {
+  return IntegrationSidebarConfig.map(({ component, to, icon, title }): ExtendMenuMixedOption => {
+    return {
+      key: `${title}-${to}`,
+      to,
+      label: () => <RouterLink to={to}>{title}</RouterLink>,
+      icon: renderIcon(icon),
+      component,
+    }
+  },
   )
 }
 </script>
@@ -140,7 +137,7 @@ function convertMenu(
             id="unconfigurator_app_bar"
             class="w-full"
           >
-            <CurrentSidebarComponent v-if="CurrentSidebarComponent && CurrentSidebarComponentState" />
+            <!-- <CurrentSidebarComponent v-if="CurrentSidebarComponent && CurrentSidebarComponentState" /> -->
           </div>
         </div>
       </NLayoutSider>
