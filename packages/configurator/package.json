@@ -40,7 +40,8 @@
   },
   "files": [
     "dist",
-    "frontend"
+    "frontend",
+    "ph-command.svg"
   ],
   "scripts": {
     "build": "tsup",
