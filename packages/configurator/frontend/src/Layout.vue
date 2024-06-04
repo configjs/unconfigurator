@@ -42,7 +42,14 @@ watch(
   { immediate: true },
 )
 
-let CurrentSidebarComponent = shallowReactive<Component>(null)
+const CurrentSidebarComponent = shallowRef<Component>(null)
+const showTrigger = computed((): boolean | 'bar' | 'arrow-circle' => {
+  return CurrentSidebarComponent.value !== null
+    ? windowWidth.value < 768
+      ? 'bar'
+      : 'arrow-circle'
+    : false
+})
 watch(
   currentMenuKey,
   async () => {
@@ -52,16 +59,16 @@ watch(
     const menuObject = menu.value.find(
       item => item.key === currentMenuKey.value,
     )
-    if (!menuObject || !menuObject.component) { CurrentSidebarComponent = null }
+    if (!menuObject || !menuObject.component) { CurrentSidebarComponent.value = null }
     else if (
       typeof menuObject === 'object'
       && typeof menuObject.component === 'function'
     ) {
-      CurrentSidebarComponent = defineAsyncComponent(
+      CurrentSidebarComponent.value = defineAsyncComponent(
         menuObject.component as any,
       )
     }
-    else { CurrentSidebarComponent = null }
+    else { CurrentSidebarComponent.value = null }
   },
   { immediate: true },
 )
@@ -101,13 +108,7 @@ function convertMenu(
       <NLayoutSider
         v-model:collapsed="collapsed"
         bordered
-        :show-trigger="
-          CurrentSidebarComponent
-            ? windowWidth < 768
-              ? 'bar'
-              : 'arrow-circle'
-            : false
-        "
+        :show-trigger="showTrigger"
         collapse-mode="width"
         :collapsed-width="windowWidth < 768 ? 0 : 60"
         :position="
