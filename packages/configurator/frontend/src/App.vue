@@ -1,7 +1,6 @@
 <script setup lang="tsx">
 import { darkTheme, zhCN } from 'naive-ui'
 import { isDark } from './composables/dark'
-import Layout from './Layout.vue'
 </script>
 
 <template>
@@ -12,7 +11,7 @@ import Layout from './Layout.vue'
           <NModalProvider>
             <NNotificationProvider>
               <NLoadingBarProvider>
-                <Layout />
+                Hello world!
               </NLoadingBarProvider>
             </NNotificationProvider>
           </NModalProvider>
