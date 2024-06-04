@@ -56,6 +56,7 @@ export default async function Configurator(): Promise<
         join(__dirname, '../frontend/src/composables'),
         join(cwd(), './.configure/frontend/src/composables'),
       ],
+      exclude: [/[\\/]\.git[\\/]/],
       include: [
         /[\\/]node_modules[\\/]/,
         /\.[jt]sx?$/,
