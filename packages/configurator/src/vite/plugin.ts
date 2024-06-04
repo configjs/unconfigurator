@@ -56,6 +56,7 @@ export default async function Configurator(): Promise<
         join(__dirname, '../frontend/src/composables'),
         join(cwd(), './.configure/frontend/src/composables'),
       ],
+      include: [/[\\/]node_modules[\\/]/],
       imports: [
         'vue',
         'vue-router',
@@ -76,6 +77,7 @@ export default async function Configurator(): Promise<
     }),
     Components({
       resolvers: [NaiveUiResolver()],
+      include: [/[\\/]node_modules[\\/]/],
       dirs: [
         join(__dirname, '../frontend/src/components'),
         join(cwd(), './.configure/frontend/src/components'),
