@@ -1,11 +1,11 @@
-import type { Server } from "socket.io";
-import { Integration } from "../../config";
-import type { IntegrationInfo } from "../loader";
+import type { Server } from 'socket.io'
+import { Integration } from '../../config'
+import type { IntegrationInfo } from '../loader'
 
 interface InitBackendRouterReturn
   extends Integration.ConfigureBackend.BackendRoute {
-  integrationName: string;
-  isInternal?: true;
+  integrationName: string
+  isInternal?: true
 }
 
 /**
@@ -18,27 +18,28 @@ interface InitBackendRouterReturn
  */
 export function initBackendRouter(
   integrations: IntegrationInfo[],
-  io: Server
+  io: Server,
 ): InitBackendRouterReturn[] {
-  const routes: InitBackendRouterReturn[] = [];
+  const routes: InitBackendRouterReturn[] = []
   for (const integration of integrations) {
-    if (!integration.integration.configureBackend) continue;
+    if (!integration.integration.configureBackend)
+      continue
 
     const ctx = new Integration.ConfigureBackend.Context(
-      io.of(`/${integration.name}`)
-    );
-    integration.integration.configureBackend(ctx);
-    // eslint-disable-next-line dot-notation
+      io.of(`/${integration.name}`),
+    )
+    integration.integration.configureBackend(ctx)
+
     routes.push(
-      ...ctx["_routes"].map(
-        (route) =>
+      ...ctx._routes.map(
+        route =>
           ({
             ...route,
             integrationName: integration.name,
             isInternal: integration.isInternal,
-          } as InitBackendRouterReturn)
-      )
-    );
+          } as InitBackendRouterReturn),
+      ),
+    )
   }
-  return routes;
+  return routes
 }

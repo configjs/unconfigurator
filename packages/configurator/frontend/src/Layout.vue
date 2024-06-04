@@ -1,72 +1,73 @@
 <script setup lang="tsx">
-import { NIcon, NLayoutContent } from "naive-ui";
-import type { Key, MenuMixedOption } from "naive-ui/es/menu/src/interface";
-import menuOptions from "virtual:unconfigurator/menu";
-import { RouterLink } from "vue-router";
-import type { Component } from "vue";
-import AppBarMp3 from "./assets/appBar.mp3";
+import { NIcon, NLayoutContent } from 'naive-ui'
+import type { Key, MenuMixedOption } from 'naive-ui/es/menu/src/interface'
+import menuOptions from 'virtual:unconfigurator/menu'
+import { RouterLink } from 'vue-router'
+import type { Component } from 'vue'
+import AppBarMp3 from './assets/appBar.mp3'
 
 type ExtendMenuMixedOption = MenuMixedOption & {
-  to: string;
-  component?: Function;
-};
+  to: string
+  component?: Function
+}
 
-const route = useRoute();
-const headerRef = ref<HTMLElement | null>(null);
-const footerRef = ref<HTMLElement | null>(null);
-const audioRef = ref<HTMLAudioElement | null>(null);
-provide("unconfigurator_header_ref", headerRef);
-provide("unconfigurator_footer_ref", footerRef);
-provide("unconfigurator_audio_ref", audioRef);
-const { width: windowWidth } = useWindowSize();
-const { contentHeight } = useContentSize(headerRef, footerRef);
-const { playing } = useMediaControls(audioRef);
+const route = useRoute()
+const headerRef = ref<HTMLElement | null>(null)
+const footerRef = ref<HTMLElement | null>(null)
+const audioRef = ref<HTMLAudioElement | null>(null)
+provide('unconfigurator_header_ref', headerRef)
+provide('unconfigurator_footer_ref', footerRef)
+provide('unconfigurator_audio_ref', audioRef)
+const { width: windowWidth } = useWindowSize()
+const { contentHeight } = useContentSize(headerRef, footerRef)
+const { playing } = useMediaControls(audioRef)
 
-const renderIcon = (icon: string) => () => <NIcon class={icon} />;
+const renderIcon = (icon: string) => () => <NIcon class={icon} />
 
-const menu = ref(convertMenu(menuOptions));
-const collapsed = ref(false);
-const currentMenuKey = ref<Key>(null);
+const menu = ref(convertMenu(menuOptions))
+const collapsed = ref(false)
+const currentMenuKey = ref<Key>(null)
 
-provide("unconfigurator_collapsed", collapsed);
+provide('unconfigurator_collapsed', collapsed)
 watch(
   () => route.fullPath,
   () => {
     // 类型实例化过深，可能无限。
     // eslint-disable-next-line ts/ban-ts-comment, ts/prefer-ts-expect-error
     // @ts-ignore
-    const value = menu.value.find((item) => item.to === route.fullPath);
-    if (value && value.key) currentMenuKey.value = value.key;
+    const value = menu.value.find(item => item.to === route.fullPath)
+    if (value && value.key)
+      currentMenuKey.value = value.key
   },
-  { immediate: true }
-);
+  { immediate: true },
+)
 
-const CurrentSidebarComponent = shallowRef<Component>(null);
+const CurrentSidebarComponent = shallowRef<Component>(null)
 watch(
   currentMenuKey,
   async () => {
-    playing.value = true;
+    playing.value = true
     // eslint-disable-next-line ts/ban-ts-comment, ts/prefer-ts-expect-error
     // @ts-ignore
     const menuObject = menu.value.find(
-      (item) => item.key === currentMenuKey.value
-    );
-    if (!menuObject || !menuObject.component)
-      CurrentSidebarComponent.value = null;
-    else if (
-      typeof menuObject === "object" &&
-      typeof menuObject.component === "function"
+      item => item.key === currentMenuKey.value,
     )
+    if (!menuObject || !menuObject.component) { CurrentSidebarComponent.value = null }
+    else if (
+      typeof menuObject === 'object'
+      && typeof menuObject.component === 'function'
+    ) {
       CurrentSidebarComponent.value = defineAsyncComponent(
-        menuObject.component as any
-      );
-    else CurrentSidebarComponent.value = null;
+        menuObject.component as any,
+      )
+    }
+    else { CurrentSidebarComponent.value = null }
   },
-  { immediate: true }
-);
+  { immediate: true },
+)
 
 function convertMenu(
-  IntegrationSidebarConfig: typeof menuOptions
+  IntegrationSidebarConfig: typeof menuOptions,
 ): ExtendMenuMixedOption[] {
   return IntegrationSidebarConfig.map(
     ({ component, to, icon, title }): ExtendMenuMixedOption => {
@@ -76,9 +77,9 @@ function convertMenu(
         label: () => <RouterLink to={to}>{title}</RouterLink>,
         icon: renderIcon(icon),
         component,
-      };
-    }
-  );
+      }
+    },
+  )
 }
 </script>
 
@@ -150,7 +151,9 @@ function convertMenu(
     </NLayout>
 
     <NLayoutFooter ref="footerRef" bordered>
-      <NText :depth="3"> uncli © {{ new Date().getFullYear() }} </NText>
+      <NText :depth="3">
+        uncli © {{ new Date().getFullYear() }}
+      </NText>
     </NLayoutFooter>
   </div>
 </template>

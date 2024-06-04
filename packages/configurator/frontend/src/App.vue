@@ -1,7 +1,7 @@
 <script setup lang="tsx">
-import { darkTheme, zhCN } from "naive-ui";
-import { isDark } from "./composables/dark";
-import Layout from "./Layout.vue";
+import { darkTheme, zhCN } from 'naive-ui'
+import { isDark } from './composables/dark'
+import Layout from './Layout.vue'
 </script>
 
 <template>

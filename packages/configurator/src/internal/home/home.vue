@@ -3,12 +3,14 @@
 /// <reference types="../../../../../fixtures/base/.configure/frontend/components" />
 
 function switchDark() {
-  toggleDark();
+  toggleDark()
 }
 </script>
 
 <template>
   <div>
-    <NButton @click="switchDark()"> 切换颜色模式 </NButton>
+    <NButton @click="switchDark()">
+      切换颜色模式
+    </NButton>
   </div>
 </template>

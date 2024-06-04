@@ -1,5 +1,5 @@
-import { Integration } from "../../config";
-import type { IntegrationInfo } from "../loader";
+import { Integration } from '../../config'
+import type { IntegrationInfo } from '../loader'
 
 /**
  * Initialize frontend information.
@@ -15,27 +15,28 @@ import type { IntegrationInfo } from "../loader";
  * ]} The frontend information.
  */
 export function initFrontend(
-  integrations: IntegrationInfo[]
+  integrations: IntegrationInfo[],
 ): [
-  Integration.ConfigureFrontend.FrontendRoute[],
-  Integration.ConfigureFrontend.AppBar[],
-  Integration.ConfigureFrontend.StatusBar[]
-] {
-  const routes: Integration.ConfigureFrontend.FrontendRoute[] = [];
-  const appBars: Integration.ConfigureFrontend.AppBar[] = [];
-  const statusBars: Integration.ConfigureFrontend.StatusBar[] = [];
+    Integration.ConfigureFrontend.FrontendRoute[],
+    Integration.ConfigureFrontend.AppBar[],
+    Integration.ConfigureFrontend.StatusBar[],
+  ] {
+  const routes: Integration.ConfigureFrontend.FrontendRoute[] = []
+  const appBars: Integration.ConfigureFrontend.AppBar[] = []
+  const statusBars: Integration.ConfigureFrontend.StatusBar[] = []
 
   for (const integration of integrations) {
-    if (!integration.integration.configureFrontend) continue;
+    if (!integration.integration.configureFrontend)
+      continue
 
-    const ctx = new Integration.ConfigureFrontend.Context(integration);
-    integration.integration.configureFrontend(ctx);
+    const ctx = new Integration.ConfigureFrontend.Context(integration)
+    integration.integration.configureFrontend(ctx)
     // eslint-disable-next-line dot-notation
-    routes.push(...ctx["_routes"]);
+    routes.push(...ctx['_routes'])
     // eslint-disable-next-line dot-notation
-    appBars.push(...ctx["_appBars"]);
+    appBars.push(...ctx['_appBars'])
     // eslint-disable-next-line dot-notation
-    statusBars.push(...ctx["_statusBars"]);
+    statusBars.push(...ctx['_statusBars'])
   }
-  return [routes, appBars, statusBars];
+  return [routes, appBars, statusBars]
 }

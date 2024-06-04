@@ -1,14 +1,14 @@
-import { writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 export interface FetchRpcDeclarationBuilder {
-  path: string;
-  method: string;
+  path: string
+  method: string
 }
 
 export function writeFetchRpcDeclaration(
   builder: FetchRpcDeclarationBuilder[],
-  path: string
+  path: string,
 ) {
   writeFileSync(
     `/* eslint-disable */
@@ -20,17 +20,17 @@ export {};
 declare global {
 ${`  ${builder
   .map(
-    (_) =>
+    _ =>
       `function fetch(input: '${join(
-        "/_unconfigurator",
-        _.path
+        '/_unconfigurator',
+        _.path,
       )}', init?: Omit<RequestInit, 'method'> & { method: '${
         _.method
-      }' }): Promise<Response>;`
+      }' }): Promise<Response>;`,
   )
-  .join("\n  ")}`}
+  .join('\n  ')}`}
 }
   `,
-    path
-  );
+    path,
+  )
 }

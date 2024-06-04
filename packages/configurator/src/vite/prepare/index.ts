@@ -1,1 +1,1 @@
-export * from "./fetchRpcDeclaration";
+export * from './fetchRpcDeclaration'

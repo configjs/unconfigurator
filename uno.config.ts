@@ -1,4 +1,4 @@
-import { defineConfig, presetIcons, presetTypography, presetUno } from "unocss";
+import { defineConfig, presetIcons, presetTypography, presetUno } from 'unocss'
 
 export default defineConfig({
   presets: [presetUno(), presetIcons(), presetTypography()],
@@ -7,4 +7,4 @@ export default defineConfig({
       include: [/\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html|ts)($|\?)/],
     },
   },
-});
+})

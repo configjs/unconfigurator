@@ -1,15 +1,15 @@
 <script setup lang="tsx">
 const treeData = ref([
   {
-    title: "package.json",
+    title: 'package.json',
   },
   {
-    title: "package.json",
+    title: 'package.json',
   },
   {
-    title: "package.jsonssssssssssdjdjdjdjdjdj",
+    title: 'package.jsonssssssssssdjdjdjdjdjdj',
   },
-]);
+])
 </script>
 
 <template>
