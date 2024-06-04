@@ -1,7 +1,7 @@
 {
   "name": "unconfigurator",
   "type": "module",
-  "version": "0.0.1-alpha.18",
+  "version": "0.0.1-alpha.19",
   "packageManager": "pnpm@8.8.0",
   "description": "A web ui for managing frontend configurations",
   "author": "Naily <zero@naily.cc> (https://naily.cc)",

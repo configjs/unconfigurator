@@ -5,6 +5,6 @@
     "configure": "configure"
   },
   "dependencies": {
-    "unconfigurator": "0.0.1-alpha.17"
+    "unconfigurator": "0.0.1-alpha.18"
   }
 }
