@@ -4,9 +4,6 @@ import { existsSync } from 'node:fs'
 import type { Plugin, PluginOption } from 'vite'
 import VueConfigurableRouter from 'vite-plugin-vue-configurable-router'
 import { match } from 'path-to-regexp'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { Server } from 'socket.io'
 import { presetIcons, presetTypography, presetUno } from 'unocss'
 import UnoCSS from 'unocss/vite'
@@ -51,6 +48,7 @@ export default async function Configurator(): Promise<
 
   return [
     VueConfigurableRouter({ routes: frontendRoutes }),
+    /*
     AutoImport({
       dirs: [
         join(__dirname, '../frontend/src/composables'),
@@ -94,6 +92,7 @@ export default async function Configurator(): Promise<
       exclude: [/[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
       version: 3,
     }),
+    */
     UnoCSS({
       presets: [presetUno(), presetIcons(), presetTypography()],
       content: {

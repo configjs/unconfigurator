@@ -8,8 +8,6 @@
     "module": "ES2022",
     "moduleResolution": "Bundler",
     "types": [
-      "../../../fixtures/base/.configure/frontend/auto-imports.d.ts",
-      "../../../fixtures/base/.configure/frontend/components.d.ts",
       "../types/env.d.ts"
     ]
   },

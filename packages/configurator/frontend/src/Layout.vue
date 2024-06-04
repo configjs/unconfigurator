@@ -1,10 +1,12 @@
 <script setup lang="tsx">
-import { NIcon, NLayoutContent } from 'naive-ui'
+import { NDivider, NIcon, NLayout, NLayoutContent, NLayoutFooter, NLayoutHeader, NLayoutSider, NMenu, NText } from 'naive-ui'
 import type { Key, MenuMixedOption } from 'naive-ui/es/menu/src/interface'
 import menuOptions from 'virtual:unconfigurator/menu'
-import { RouterLink } from 'vue-router'
-import type { Component } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+import { type Component, defineAsyncComponent, nextTick, provide, ref, watch } from 'vue'
+import { useMediaControls, useWindowSize } from '@vueuse/core'
 import AppBarMp3 from './assets/appBar.mp3'
+import { useContentSize } from './composables/contentSize'
 
 type ExtendMenuMixedOption = MenuMixedOption & {
   to: string

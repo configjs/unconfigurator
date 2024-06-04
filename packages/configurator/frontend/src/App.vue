@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { darkTheme, zhCN } from 'naive-ui'
+import { NConfigProvider, NDialogProvider, NLoadingBarProvider, NMessageProvider, NModalProvider, NNotificationProvider, darkTheme, zhCN } from 'naive-ui'
 import { isDark } from './composables/dark'
 </script>
 

@@ -1,5 +1,6 @@
 import type { ManagerOptions, SocketOptions } from 'socket.io-client'
 import { io } from 'socket.io-client'
+import { ref } from 'vue'
 
 export namespace UseSocket {
   export type Status =

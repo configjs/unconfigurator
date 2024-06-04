@@ -1,3 +1,6 @@
+import { useElementSize } from '@vueuse/core'
+import { type Ref, computed, inject } from 'vue'
+
 /**
  * Get computed content height & header/footer height
  *
