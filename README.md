@@ -1,10 +1,10 @@
 <div align="center">
   <img src="./ph-command.svg" />
-  <h1>uncli</h1>
+  <h1>unconfigurator</h1>
   <p>Try to make a web page to managing all frontend project configurations.</p>
 </div>
 
-Try to make a simple command: just run `uncli` in the project root directory, and then you can manage all the configurations of the project through the web page.
+Try to make a simple command: just run `unconfigurator` or `configure` command in the project root directory, and then you can manage all the configurations of the project through the web page.
 
 ## Features
 
@@ -15,7 +15,7 @@ Try to make a simple command: just run `uncli` in the project root directory, an
 ## Integration
 
 - [x] **package.json management**
-- [ ] **uncli.json management**
+- [ ] **configure.json management**
 - [ ] **.gitignore management**
 - [ ] **.npmignore management**
 - [ ] **.editorconfig management**
